@@ -9,6 +9,10 @@ MiniKitchen is a restaurant website and admin demo with a menu, direct reservati
 - Google Gemini through `@google/genai`
 - JSON-file storage (`data/db.json` locally) and Netlify Blobs in production for shared, persistent menu and reservation data. MongoDB is not connected.
 
+## Documentation
+
+See [docs/PROJECT_DOCUMENTATION.md](./docs/PROJECT_DOCUMENTATION.md) for installation, environment variables, data setup, AI configuration, deployment instructions, and key workflows.
+
 ## Run locally
 
 Prerequisite: Node.js.
