@@ -8,8 +8,9 @@ import { GoogleGenAI, Type } from '@google/genai';
 
 dotenv.config();
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const __dirname = process.env.NETLIFY_FUNCTION === 'true'
+  ? process.cwd()
+  : path.dirname(fileURLToPath(import.meta.url));
 
 const app = express();
 const PORT = Number(process.env.PORT) || 3000;
@@ -37,7 +38,11 @@ app.use((req: Request, res: Response, next) => {
 app.use(express.json());
 
 // Persistent Data Storage Path
-const DATA_DIR = process.env.DATA_DIR || path.resolve(__dirname, 'data');
+const DATA_DIR = process.env.DATA_DIR || (
+  process.env.NETLIFY_FUNCTION === 'true'
+    ? path.join('/tmp', 'minikitchen-data')
+    : path.resolve(__dirname, 'data')
+);
 const DATA_FILE = path.join(DATA_DIR, 'db.json');
 const ADMIN_TOKEN_SECRET = process.env.ADMIN_TOKEN_SECRET || crypto.randomBytes(32).toString('hex');
 const bookingLookupAttempts = new Map<string, { count: number; resetAt: number }>();
@@ -843,7 +848,10 @@ app.get('/api/contact', (_req: Request, res: Response) => {
 // Admin Auth
 app.post('/api/admin/login', (req: Request, res: Response) => {
   const { username, password } = req.body;
-  if (process.env.NODE_ENV === 'production' && !process.env.ADMIN_PASSWORD) {
+  if (
+    process.env.NODE_ENV === 'production' &&
+    (!process.env.ADMIN_PASSWORD || !process.env.ADMIN_TOKEN_SECRET)
+  ) {
     return res.status(503).json({ error: 'Admin login is not configured.' });
   }
   const expectedUsername = process.env.ADMIN_USERNAME || 'admin';
@@ -1467,6 +1475,10 @@ async function startServer() {
   });
 }
 
-startServer().catch((err) => {
-  console.error('Failed to start server:', err);
-});
+export { app };
+
+if (process.env.NETLIFY_FUNCTION !== 'true') {
+  startServer().catch((err) => {
+    console.error('Failed to start server:', err);
+  });
+}

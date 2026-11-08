@@ -4,6 +4,7 @@ dist/
 coverage/
 .aistudio/
 .netlify/
+deno.lock
 .tsupgrader/
 /data/
 .DS_Store

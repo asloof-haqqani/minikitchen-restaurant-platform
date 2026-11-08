@@ -42,7 +42,6 @@ export const AdminLoginModal: React.FC<AdminLoginModalProps> = ({
       localStorage.setItem('mk_admin_token', data.token);
       localStorage.setItem('mk_admin_user', JSON.stringify(data.admin));
       onLoginSuccess(data.admin);
-      onClose();
     } catch (err: any) {
       setErrorMsg(err.message || 'Login failed. Please verify credentials.');
     } finally {
