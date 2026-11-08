@@ -549,6 +549,14 @@ function writeDB(data: DBStructure): void {
   }
 }
 
+export function restoreDBSnapshot(snapshot: string): void {
+  fs.writeFileSync(DATA_FILE, snapshot, 'utf-8');
+}
+
+export function getDBSnapshot(): string {
+  return fs.readFileSync(DATA_FILE, 'utf-8');
+}
+
 // Initialize DB if not present
 readDB();
 

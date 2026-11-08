@@ -80,6 +80,23 @@ function MiniKitchenMain() {
   }, [loadData]);
 
   useEffect(() => {
+    if (currentView !== 'admin' || !isAdminLoggedIn) return;
+
+    const refreshVisibleDashboard = () => {
+      if (document.visibilityState === 'visible') {
+        void loadData();
+      }
+    };
+    const intervalId = window.setInterval(refreshVisibleDashboard, 15000);
+    window.addEventListener('focus', refreshVisibleDashboard);
+
+    return () => {
+      window.clearInterval(intervalId);
+      window.removeEventListener('focus', refreshVisibleDashboard);
+    };
+  }, [currentView, isAdminLoggedIn, loadData]);
+
+  useEffect(() => {
     const handleExpiredAdminSession = () => {
       setIsAdminLoggedIn(false);
       setAdminUser(null);
