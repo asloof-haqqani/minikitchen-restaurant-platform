@@ -1,0 +1,109 @@
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "Playfair Display", Georgia, serif;
+  --font-sans: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.global-food-icon {
+  color: #d4a43c;
+  opacity: 0.48;
+  animation: global-food-drift 9s ease-in-out infinite;
+  filter: drop-shadow(0 1px 5px rgb(212 164 60 / 28%));
+}
+
+.global-food-icon svg {
+  width: 26px;
+  height: 26px;
+}
+
+.hero-featured-dish-float {
+  animation: featured-dish-float 5s ease-in-out infinite;
+  will-change: transform;
+}
+
+@keyframes featured-dish-float {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  50% {
+    transform: translate3d(0, -14px, 0);
+  }
+}
+
+@keyframes global-food-drift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(-5deg);
+    opacity: 0.34;
+  }
+
+  50% {
+    transform: translate3d(9px, -18px, 0) rotate(7deg);
+    opacity: 0.68;
+  }
+}
+
+@media (min-width: 640px) {
+  .global-food-icon svg {
+    width: 34px;
+    height: 34px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .global-food-icon {
+    animation: none;
+    opacity: 0.48;
+  }
+
+  .hero-featured-dish-float {
+    animation: none;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Custom scrollbar for chat and tables */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #d6d3d1;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #a8a29e;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+/* Hide scrollbar for IE, Edge and Firefox */
+.no-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
