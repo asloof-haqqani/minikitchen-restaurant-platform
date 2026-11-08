@@ -338,6 +338,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
     const matchesSearch =
       r.customerName.toLowerCase().includes(reservationSearch.toLowerCase()) ||
       r.contactPhone.toLowerCase().includes(reservationSearch.toLowerCase()) ||
+      (r.bookingReference?.toLowerCase().includes(reservationSearch.toLowerCase()) ?? false) ||
       r.reservationDate.includes(reservationSearch) ||
       (r.specialRequests && r.specialRequests.toLowerCase().includes(reservationSearch.toLowerCase()));
 
@@ -786,6 +787,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
                     <thead>
                       <tr className="border-b border-stone-100 text-[11px] font-semibold text-stone-400 uppercase tracking-wider">
                         <th className="py-2.5 px-3">Customer</th>
+                        <th className="py-2.5 px-3">Booking Ref</th>
                         <th className="py-2.5 px-3">Date</th>
                         <th className="py-2.5 px-3">Time</th>
                         <th className="py-2.5 px-3">Guests</th>
@@ -797,7 +799,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
                     <tbody className="divide-y divide-stone-100 text-xs">
                       {reservations.length === 0 ? (
                         <tr>
-                          <td colSpan={7} className="py-8 text-center text-stone-400 text-xs">
+                          <td colSpan={8} className="py-8 text-center text-stone-400 text-xs">
                             No reservations yet. Test booking with the public form or AI chatbot.
                           </td>
                         </tr>
@@ -813,6 +815,10 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
                                   {res.contactPhone}
                                 </span>
                               )}
+                            </td>
+
+                            <td className="py-3 px-3 font-mono font-semibold text-[#9a6500] whitespace-nowrap">
+                              {res.bookingReference || '—'}
                             </td>
 
                             <td className="py-3 px-3 text-stone-600 font-sans whitespace-nowrap">
@@ -1021,7 +1027,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
                     <Search className="w-4 h-4 text-stone-400 absolute left-3 top-1/2 -translate-y-1/2" />
                     <input
                       type="text"
-                      placeholder="Search guest, phone, date..."
+                      placeholder="Search guest, booking ref, phone..."
                       value={reservationSearch}
                       onChange={(e) => setReservationSearch(e.target.value)}
                       className="pl-9 pr-3 py-2 text-xs rounded-xl border border-stone-200 text-stone-800 placeholder:text-stone-400 focus:outline-none focus:border-[#F5B82E] w-56 sm:w-64"
@@ -1079,6 +1085,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
                   <thead>
                     <tr className="bg-stone-50/80 border-b border-stone-100 text-[11px] font-semibold text-stone-500 uppercase tracking-wider">
                       <th className="py-3 px-4">Customer</th>
+                      <th className="py-3 px-4">Booking Ref</th>
                       <th className="py-3 px-4">Date</th>
                       <th className="py-3 px-4">Time</th>
                       <th className="py-3 px-4">Guests</th>
@@ -1091,7 +1098,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
                   <tbody className="divide-y divide-stone-100 text-xs">
                     {filteredReservations.length === 0 ? (
                       <tr>
-                        <td colSpan={8} className="py-12 text-center text-stone-400 text-xs">
+                        <td colSpan={9} className="py-12 text-center text-stone-400 text-xs">
                           No reservations match the active filter.
                         </td>
                       </tr>
@@ -1106,6 +1113,10 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
                               {res.contactPhone && <span>{res.contactPhone}</span>}
                               {res.contactEmail && <span>&bull; {res.contactEmail}</span>}
                             </div>
+                          </td>
+
+                          <td className="py-3.5 px-4 font-mono font-semibold text-[#9a6500] whitespace-nowrap">
+                            {res.bookingReference || '—'}
                           </td>
 
                           <td className="py-3.5 px-4 text-stone-700 whitespace-nowrap">
