@@ -1,6 +1,7 @@
 import React from 'react';
 import { ArrowRight, Calendar } from 'lucide-react';
 import { motion } from 'motion/react';
+import { restaurantImageUrl } from '../utils/restaurantImage';
 
 interface ReserveBannerProps {
   onBookNow: () => void;
@@ -40,7 +41,7 @@ export const ReserveBanner: React.FC<ReserveBannerProps> = ({ onBookNow }) => {
           {/* Right: Dining Room with Glowing MiniKitchen sign */}
           <div className="md:col-span-7 relative min-h-[260px] sm:min-h-[320px]">
             <img
-              src="/src/assets/images/hero_restaurant_ambiance_1793941743774.jpg"
+              src={restaurantImageUrl('/src/assets/images/hero_restaurant_ambiance_1793941743774.jpg')}
               alt="MiniKitchen dining room ambiance"
               className="w-full h-full object-cover"
             />

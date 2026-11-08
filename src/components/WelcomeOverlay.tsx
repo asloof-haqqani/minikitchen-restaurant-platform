@@ -15,6 +15,7 @@ import {
   X,
 } from 'lucide-react';
 import { OFFICIAL_LOGO_URL } from './Navbar';
+import { restaurantImageUrl } from '../utils/restaurantImage';
 
 interface WelcomeOverlayProps {
   isOpen: boolean;
@@ -139,7 +140,7 @@ export const WelcomeOverlay: React.FC<WelcomeOverlayProps> = ({
         {/* Cinematic Restaurant Interior Background with Warm Glow & Dark Scrim */}
         <div className="fixed inset-0 w-full h-full pointer-events-none">
           <img
-            src="/src/assets/images/hero_restaurant_ambiance_1793941743774.jpg"
+            src={restaurantImageUrl('/src/assets/images/hero_restaurant_ambiance_1793941743774.jpg')}
             alt="MiniKitchen warm restaurant ambiance"
             className="w-full h-full object-cover object-center scale-105 filter brightness-[0.38] contrast-[1.1]"
           />

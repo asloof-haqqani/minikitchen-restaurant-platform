@@ -3,6 +3,7 @@ import { Calendar, ArrowRight } from 'lucide-react';
 import { motion, useReducedMotion } from 'motion/react';
 import { MenuItemData } from '../data/demoMenu';
 import { GoldFlickers } from './GoldFlickers';
+import { restaurantImageUrl } from '../utils/restaurantImage';
 
 interface HeroSectionProps {
   onReserveClick?: () => void;
@@ -28,7 +29,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
           initial={{ scale: 1.04 }}
           animate={{ scale: 1 }}
           transition={{ duration: 1.5, ease: 'easeOut' }}
-          src="/src/assets/images/hero_steak_bg_1793946373904.jpg"
+          src={restaurantImageUrl('/src/assets/images/hero_steak_bg_1793946373904.jpg')}
           alt="MiniKitchen juicy grilled steak on slate board with rosemary, vegetables, and steam"
           className="w-full h-full object-cover object-right lg:object-center will-change-transform"
         />
@@ -59,7 +60,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
           >
             <div className="relative aspect-[16/10] overflow-hidden">
               <img
-                src={featuredDish.image}
+                src={restaurantImageUrl(featuredDish.image)}
                 alt={featuredDish.name}
                 className="h-full w-full object-cover transition-transform duration-700 hover:scale-105"
                 onError={(event) => {
@@ -101,7 +102,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
           >
             <div className="relative h-12 overflow-hidden sm:h-14">
               <img
-                src={featuredDish.image}
+                src={restaurantImageUrl(featuredDish.image)}
                 alt={featuredDish.name}
                 className="h-full w-full object-cover"
                 onError={(event) => {

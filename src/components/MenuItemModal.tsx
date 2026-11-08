@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { X, Utensils, Check, Image as ImageIcon } from 'lucide-react';
 import { MenuItem, MenuCategory } from '../types';
+import { restaurantImageUrl } from '../utils/restaurantImage';
 
 interface MenuItemModalProps {
   isOpen: boolean;
@@ -16,8 +17,8 @@ const PRESET_IMAGES = [
   { label: 'Smash Burger', url: '/src/assets/images/smash_beef_burger_1794144185428.jpg' },
   { label: 'Classic Burger', url: '/src/assets/images/food_classic_burger_1793943077745.jpg' },
   { label: 'Truffle Pasta', url: '/src/assets/images/food_signature_truffle_pasta_1793941744497.jpg' },
-  { label: 'Peri-Peri Chicken', url: '/src/assets/images/peri_peri_chicken_1794144185794.jpg' },
-  { label: 'Beef Shawarma', url: '/src/assets/images/beef_shawarma_wrap_1794144215354.jpg' },
+  { label: 'Peri-Peri Chicken', url: '/src/assets/images/peri_peri_chicken_1794144200612.jpg' },
+  { label: 'Beef Shawarma', url: '/src/assets/images/beef_shawarma_wrap_1794144201442.jpg' },
   { label: 'Truffle Fries', url: '/src/assets/images/truffle_fries_1794144234391.jpg' },
   { label: 'Berry Mojito', url: '/src/assets/images/berry_bliss_mojito_1794144215709.jpg' },
   { label: 'Lava Cake', url: '/src/assets/images/chocolate_lava_cake_1794144216052.jpg' },
@@ -262,7 +263,7 @@ export const MenuItemModal: React.FC<MenuItemModalProps> = ({
                 <button
                   key={preset.label}
                   type="button"
-                  onClick={() => setImage(preset.url)}
+                  onClick={() => setImage(restaurantImageUrl(preset.url))}
                   className="px-2 py-0.5 rounded bg-stone-800 hover:bg-stone-700 text-stone-300 border border-stone-700 text-[10px]"
                 >
                   {preset.label}

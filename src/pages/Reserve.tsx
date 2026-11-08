@@ -6,6 +6,7 @@ import { Reservation } from '../types';
 import { Footer } from '../components/Footer';
 import { apiUrl } from '../services/api';
 import { BookingStatusResult, checkBookingStatus } from '../services/reservationApi';
+import { restaurantImageUrl } from '../utils/restaurantImage';
 
 type ReservationTab = 'reserve' | 'check';
 
@@ -169,7 +170,7 @@ export const Reserve: React.FC<ReserveProps> = ({
         {/* Background Photo with Candlelit Dining Table */}
         <div className="absolute inset-0 w-full h-full">
           <img
-            src="/src/assets/images/reserve_table_ambiance_1793980663419.jpg"
+            src={restaurantImageUrl('/src/assets/images/reserve_table_ambiance_1793980663419.jpg')}
             alt="MiniKitchen romantic candlelit dining table ambiance"
             className="w-full h-full object-cover object-right lg:object-center opacity-70"
           />

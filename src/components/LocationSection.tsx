@@ -1,6 +1,7 @@
 import React from 'react';
 import { MapPin, Navigation, Clock } from 'lucide-react';
 import { RESTAURANT_INFO } from '../config/restaurantInfo';
+import { restaurantImageUrl } from '../utils/restaurantImage';
 
 export const LocationSection: React.FC = () => {
   return (
@@ -32,7 +33,7 @@ export const LocationSection: React.FC = () => {
         {/* Right: Restaurant Exterior / Storefront Evening Photograph */}
         <div className="relative rounded-3xl overflow-hidden border border-stone-800 bg-[#171717] min-h-[300px] sm:min-h-[360px] shadow-2xl group">
           <img
-            src="/src/assets/images/restaurant_entrance_1793980636853.jpg"
+            src={restaurantImageUrl('/src/assets/images/restaurant_entrance_1793980636853.jpg')}
             alt="MiniKitchen exterior dining entrance in Colombo with glowing evening lights"
             className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
             loading="lazy"

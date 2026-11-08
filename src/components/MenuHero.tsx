@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import { GoldFlickers } from './GoldFlickers';
+import { restaurantImageUrl } from '../utils/restaurantImage';
 
 export const MenuHero: React.FC = () => {
   return (
@@ -8,7 +9,7 @@ export const MenuHero: React.FC = () => {
       {/* Background with Dark Slate Steak Image */}
       <div className="absolute inset-0 w-full h-full">
         <img
-          src="/src/assets/images/hero_steak_bg_1793946373904.jpg"
+          src={restaurantImageUrl('/src/assets/images/hero_steak_bg_1793946373904.jpg')}
           alt="MiniKitchen Menu culinary backdrop with sizzling steak"
           className="w-full h-full object-cover object-right lg:object-center opacity-80"
         />

@@ -2,6 +2,7 @@ import React from 'react';
 import { MenuItemData } from '../data/demoMenu';
 import { Utensils } from 'lucide-react';
 import { motion } from 'motion/react';
+import { restaurantImageUrl } from '../utils/restaurantImage';
 
 interface FoodCardProps {
   item: MenuItemData;
@@ -21,7 +22,7 @@ export const FoodCard: React.FC<FoodCardProps> = ({ item }) => {
       <div className="relative aspect-[16/10] bg-[#171717] overflow-hidden">
         {item.image ? (
           <img
-            src={item.image}
+            src={restaurantImageUrl(item.image)}
             alt={item.name}
             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
             loading="lazy"

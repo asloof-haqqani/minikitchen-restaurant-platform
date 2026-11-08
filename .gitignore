@@ -4,6 +4,7 @@ dist/
 coverage/
 .aistudio/
 .netlify/
+.tsupgrader/
 /data/
 .DS_Store
 *.log

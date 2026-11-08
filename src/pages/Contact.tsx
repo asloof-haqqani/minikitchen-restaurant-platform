@@ -5,6 +5,7 @@ import { LocationSection } from '../components/LocationSection';
 import { Footer } from '../components/Footer';
 import { motion } from 'motion/react';
 import { GoldFlickers } from '../components/GoldFlickers';
+import { restaurantImageUrl } from '../utils/restaurantImage';
 
 interface ContactProps {
   onOpenAdmin: () => void;
@@ -20,7 +21,7 @@ export const Contact: React.FC<ContactProps> = ({ onOpenAdmin, onOpenChat, onNav
         {/* Background Photo with Cozy Restaurant Interior & MiniKitchen Glow */}
         <div className="absolute inset-0 w-full h-full">
           <img
-            src="/src/assets/images/hero_restaurant_ambiance_1793941743774.jpg"
+            src={restaurantImageUrl('/src/assets/images/hero_restaurant_ambiance_1793941743774.jpg')}
             alt="MiniKitchen warm restaurant ambiance"
             className="w-full h-full object-cover object-right lg:object-center opacity-70"
           />

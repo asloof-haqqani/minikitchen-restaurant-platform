@@ -31,6 +31,7 @@ import { MenuItemModal } from './MenuItemModal';
 import { LOGO_URL } from './Navbar';
 import { adminFetch, apiUrl } from '../services/api';
 import { motion } from 'motion/react';
+import { restaurantImageUrl } from '../utils/restaurantImage';
 
 interface ContactMessage {
   id: string;
@@ -1301,7 +1302,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
                     <div className="relative h-40 bg-stone-100 overflow-hidden">
                       {item.image ? (
                         <img
-                          src={item.image}
+                          src={restaurantImageUrl(item.image)}
                           alt={item.name}
                           className="w-full h-full object-cover"
                         />
